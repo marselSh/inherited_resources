@@ -78,7 +78,7 @@ class IndexActionBaseTest < ActionController::TestCase
   end
 
   def test_scoped_is_called_only_when_available
-    User.stubs(:all).returns([mock_user])
+    User.stubs(:load).returns([mock_user])
     get :index
     assert_equal Array, assigns(:users).class
   end
