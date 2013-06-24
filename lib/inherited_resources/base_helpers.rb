@@ -24,6 +24,8 @@ module InheritedResources
           c = end_of_association_chain
           use_scoped = c.respond_to?(:scoped) && !defined?(ActiveRecord::DeprecatedFinders)
           set_collection_ivar(use_scoped ? c.scoped : c.load)
+          rescue ArgumentError
+            c.all
         end
       end
 
